@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const connect = () => {
   return mongoose.connect(
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.hpv0xje.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_DB}?retryWrites=true&w=majority`
   );
 };
 
