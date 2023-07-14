@@ -9,4 +9,16 @@ app.use(cors());
 const userController = require("./controllers/user.controller");
 app.use("/users", userController);
 
+// User register and login controller for manual auth
+const { register, login } = require("./controllers/auth.controller");
+
+// Express Validation
+const {
+  validationBodyRules,
+  checkRules,
+} = require("./middlewares/auth.validator");
+
+app.post("/register", validationBodyRules, checkRules, register);
+app.post("/login", login);
+
 module.exports = app;
