@@ -18,7 +18,9 @@ const register = async (req, res) => {
     // If new user create it or allow to register
     user = await User.create(req.body);
     const token = generateToken(user);
-    return res.status(200).send({ token });
+    return res
+      .status(200)
+      .send({ email: user.email, role: user.role, token: token });
   } catch (err) {
     console.error("Error during user creation:", err);
     return res.status(400).send({ message: err.message });
@@ -43,7 +45,11 @@ const login = async (req, res) => {
 
     // if credentials match, generate token for user
     const token = generateToken(user);
-    return res.status(200).send({ token });
+    return res.status(200).send({
+      email: user.email,
+      role: user.role,
+      token: token,
+    });
   } catch (err) {
     return res.status(400).send({ message: err.message });
   }
