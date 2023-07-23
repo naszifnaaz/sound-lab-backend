@@ -9,6 +9,10 @@ app.use(cors());
 const userController = require("./controllers/user.controller");
 app.use("/users", userController);
 
+// Product Routes
+const productController = require("./controllers/product.controller");
+app.use("/products", productController);
+
 // User register and login controller for manual auth
 const { register, login } = require("./controllers/auth.controller");
 
